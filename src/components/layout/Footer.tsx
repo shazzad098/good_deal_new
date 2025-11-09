@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -30,19 +31,21 @@ const Footer = () => {
 
     const footerLinks = {
         company: [
-            { name: "About Us", href: "#about" },
+            { name: "About Us", href: "/#about" },
             { name: "Our Team", href: "#" },
             { name: "Careers", href: "#" },
         ],
         products: [
-            { name: "T-Shirts", href: "#collections" },
-            { name: "Polo Shirts", href: "#collections" },
-            { name: "Hoodies", href: "#collections" },
+            { name: "All Collections", href: "/products" },
+            { name: "T-Shirts", href: "/products" },
+            { name: "Polo Shirts", href: "/products" },
+            { name: "Hoodies", href: "/products" },
         ],
+        // ✨ সাপোর্ট লিঙ্কগুলো আপডেট করা হয়েছে
         support: [
-            { name: "Help Center", href: "#" },
-            { name: "Documentation", href: "#" },
-            { name: "Quality Guide", href: "#" },
+            { name: "Help Center", href: "/help" },
+            { name: "Documentation", href: "/documentation" },
+            { name: "Quality Guide", href: "/quality-guide" },
         ],
     };
 
@@ -63,7 +66,7 @@ const Footer = () => {
                                 <Phone className="w-6 h-6 text-primary flex-shrink-0" />
                                 <div>
                                     <div className="font-semibold mb-1">Call Us</div>
-                                    <div className="text-background/70">+1 (555) 123-4567</div>
+                                    <div className="text-background/70">+880 1619 302150</div>
                                 </div>
                             </div>
 
@@ -71,7 +74,12 @@ const Footer = () => {
                                 <Mail className="w-6 h-6 text-primary flex-shrink-0" />
                                 <div>
                                     <div className="font-semibold mb-1">Email Us</div>
-                                    <div className="text-background/70">info@gooddeal.com</div>
+                                    <a
+                                        href="mailto:good.deal326@gmail.com"
+                                        className="text-background/70 hover:text-primary transition-colors duration-200 cursor-pointer"
+                                    >
+                                        good.deal326@gmail.com
+                                    </a>
                                 </div>
                             </div>
 
@@ -80,7 +88,7 @@ const Footer = () => {
                                 <div>
                                     <div className="font-semibold mb-1">Visit Us</div>
                                     <div className="text-background/70">
-                                        123 Textile District, Manufacturing Hub
+
                                     </div>
                                 </div>
                             </div>
@@ -160,15 +168,15 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Links Sections */}
+                    {/* Links Sections (<a> থেকে <Link>-এ পরিবর্তন) */}
                     <div>
                         <h4 className="font-bold text-lg mb-4">Company</h4>
                         <ul className="space-y-3">
                             {footerLinks.company.map((link) => (
                                 <li key={link.name}>
-                                    <a href={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
+                                    <Link to={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -179,9 +187,9 @@ const Footer = () => {
                         <ul className="space-y-3">
                             {footerLinks.products.map((link) => (
                                 <li key={link.name}>
-                                    <a href={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
+                                    <Link to={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -192,28 +200,28 @@ const Footer = () => {
                         <ul className="space-y-3">
                             {footerLinks.support.map((link) => (
                                 <li key={link.name}>
-                                    <a href={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
+                                    <Link to={link.href} className="text-background/70 hover:text-background transition-colors text-sm">
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
 
-                {/* Copyright */}
+                {/* Copyright (<a> থেকে <Link>-এ পরিবর্তন) */}
                 <div className="pt-8 border-t border-background/10">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-background/60 text-sm">
                             © {currentYear} Good Deal. All rights reserved.
                         </p>
                         <div className="flex gap-6 text-sm">
-                            <a href="#" className="text-background/60 hover:text-background transition-colors">
+                            <Link to="#" className="text-background/60 hover:text-background transition-colors">
                                 Privacy Policy
-                            </a>
-                            <a href="#" className="text-background/60 hover:text-background transition-colors">
+                            </Link>
+                            <Link to="#" className="text-background/60 hover:text-background transition-colors">
                                 Terms of Service
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

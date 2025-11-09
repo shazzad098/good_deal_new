@@ -4,6 +4,7 @@ import tshirtImage from "@/assets/product-tshirt.jpg";
 import poloImage from "@/assets/product-polo.jpg";
 import hoodieImage from "@/assets/product-hoodie.jpg";
 import denimImage from "@/assets/product-denim.jpg";
+import { Link } from "react-router-dom";
 
 const Collections = () => {
     const products = [
@@ -77,13 +78,15 @@ const Collections = () => {
 ))}
     </div>
 
-    <div className="text-center mt-12">
-    <Button variant="cta" size="lg" className="rounded-full">
-        Explore Projects
-    </Button>
+        <div className="text-center mt-12">
+            <Button variant="cta" size="lg" className="rounded-full" asChild>
+                <Link to="/products">
+                    Explore All Products
+                </Link>
+            </Button>
+        </div>
     </div>
-    </div>
-    </section>
+        </section>
 );
 };
 
