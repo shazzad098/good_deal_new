@@ -1,10 +1,12 @@
+// src/components/layout/Navbar.tsx
+
 import { Button } from "@/components/ui/button";
 import { Menu, X, LifeBuoy, BookOpen, ShieldCheck } from "lucide-react";
-import React from "react"; // ✨ সমাধান: React কে ইমপোর্ট করা হয়েছে
-import { useState } from "react"; // ✨ useState ইমপোর্ট করা হয়েছে
+import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-    NavigationMenu,
+    NavigationMenu, // ✨ এরর সমাধানের জন্য এই লাইনটি যোগ করা হয়েছে
     NavigationMenuContent,
     NavigationMenuItem,
     NavigationMenuLink,
@@ -47,9 +49,9 @@ const Navbar = () => {
 
     const navItems = [
         { name: "Home", href: "/" },
-        { name: "About", href: "/#about" },
+        { name: "About", href: "/about" },
         { name: "Collections", href: "/products" },
-        { name: "Process", href: "/#process" },
+        // ✨ "Process" পেজটি এখান থেকে সরিয়ে দেওয়া হয়েছে
     ];
 
     const supportLinks = [
@@ -103,7 +105,7 @@ const Navbar = () => {
 
                     <div className="hidden md:flex items-center gap-4">
                         <Button variant="cta" size="default" asChild>
-                            <Link to="/#contact">Get a Quote</Link>
+                            <Link to="/contact">Get a Quote</Link>
                         </Button>
                     </div>
 
@@ -147,7 +149,7 @@ const Navbar = () => {
                         </div>
 
                         <Button variant="cta" size="default" className="w-full" asChild>
-                            <Link to="/#contact" onClick={() => setIsOpen(false)}>Get a Quote</Link>
+                            <Link to="/contact" onClick={() => setIsOpen(false)}>Get a Quote</Link>
                         </Button>
                     </div>
                 )}
