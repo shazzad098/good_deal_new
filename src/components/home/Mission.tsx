@@ -117,32 +117,15 @@ const Mission = () => {
                         </div>
                     </div>
 
-                    {/* ✨ 4. ডান কলামে AnimatedCounter ব্যবহার করা হয়েছে */}
                     <div className="grid grid-cols-2 gap-6">
-                        {/* Large Stat Card */}
-                        <div className="col-span-2 bg-card p-8 rounded-2xl border border-border relative overflow-hidden shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-xl">
-                            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
-                            <Award className="w-12 h-12 text-primary mb-4" />
-                            {/* 👇 পরিবর্তন এখানে */}
-                            <div className="text-5xl font-bold text-foreground mb-2">
-                                <AnimatedCounter targetValue={1680} />+
-                            </div>
-                            <p className="text-muted-foreground">Successful Projects Delivered</p>
-                        </div>
 
                         {/* Team Photos & Count */}
                         <div className="bg-card p-8 rounded-2xl border border-border shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-xl">
                             <Users className="w-10 h-10 text-primary mb-4" />
-                            {/* 👇 পরিবর্তন এখানে */}
                             <div className="text-4xl font-bold text-foreground mb-2">
-                                <AnimatedCounter targetValue={25} />+
+                                <h3>Expert</h3>
                             </div>
-                            <p className="text-muted-foreground text-sm">Expert Team Members</p>
-                            <div className="flex -space-x-2 mt-4">
-                                <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background ring-2 ring-background"></div>
-                                <div className="w-8 h-8 rounded-full bg-primary/30 border-2 border-background ring-2 ring-background"></div>
-                                <div className="w-8 h-8 rounded-full bg-primary/40 border-2 border-background ring-2 ring-background"></div>
-                            </div>
+                            <p className="text-muted-foreground text-sm">Team Members</p>
                         </div>
 
                         {/* Satisfaction Rate */}

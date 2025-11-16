@@ -45,10 +45,7 @@ const WhyChooseUs = () => {
                                     <div className="text-2xl font-bold text-foreground">100%</div>
                                     <div className="text-sm text-muted-foreground">Quality Inspected</div>
                                 </div>
-                                <div className="bg-card/95 p-4 rounded-lg">
-                                    <div className="text-2xl font-bold text-foreground">ISO</div>
-                                    <div className="text-sm text-muted-foreground">Certified</div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

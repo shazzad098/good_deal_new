@@ -1,15 +1,13 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Building, Target, Users, CheckCircle, Leaf, Globe } from "lucide-react";
+import { Building, CheckCircle, Leaf, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 // বিদ্যমান অ্যাসেটগুলো পুনঃব্যবহার করা হচ্ছে
 import factoryImage from "@/assets/hero-factory.jpg";
-import teamImage1 from "@/assets/hero-worker.jpg";
-import teamImage2 from "@/assets/quality-control.jpg";
 
 const AboutPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -108,52 +106,7 @@ const AboutPage = () => {
             </section>
 
             {/* Meet The Team সেকশন */}
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Meet Our Team
-                        </h2>
-                        <p className="text-lg text-muted-foreground">
-                            The driving force behind our quality and innovation.
-                        </p>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {/* Placeholder Team Member 1 */}
-                        <div className="text-center">
-                            <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-4 border-4 border-primary/20">
-                                <img src={teamImage1} alt="Team Member 1" className="w-full h-full object-cover" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground">A. K. Azad</h3>
-                            <p className="text-muted-foreground">Founder & CEO</p>
-                        </div>
-                        {/* Placeholder Team Member 2 */}
-                        <div className="text-center">
-                            <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-4 border-4 border-primary/20">
-                                <img src={teamImage2} alt="Team Member 2" className="w-full h-full object-cover object-[20%_30%]" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground">Sadiya Rahman</h3>
-                            <p className="text-muted-foreground">Head of Quality Assurance</p>
-                        </div>
-                        {/* Placeholder Team Member 3 */}
-                        <div className="text-center">
-                            <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-4 border-4 border-primary/20 bg-gray-200 flex items-center justify-center">
-                                <Users className="w-16 h-16 text-gray-400" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground">Michael Lee</h3>
-                            <p className="text-muted-foreground">Production Manager</p>
-                        </div>
-                        {/* Placeholder Team Member 4 */}
-                        <div className="text-center">
-                            <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-4 border-4 border-primary/20 bg-gray-200 flex items-center justify-center">
-                                <Users className="w-16 h-16 text-gray-400" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground">David Chen</h3>
-                            <p className="text-muted-foreground">Logistics Head</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
 
             <Footer />
         </div>
