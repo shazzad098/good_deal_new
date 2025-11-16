@@ -1,10 +1,28 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-
 import { useState, useEffect } from "react";
-import { ArrowRight, Tag, Star, Filter } from "lucide-react";
-import { cn } from "@/lib/utils"; // cn utility function ইমপোর্ট করা হয়েছে
+import { Tag, Star, Filter, Home } from "lucide-react"; // Home আইকন ইমপোর্ট করা হয়েছে
+import { cn } from "@/lib/utils";
+
+// Card কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardTitle,
+} from "@/components/ui/card";
+
+// Breadcrumb কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 import {
     Drawer,
@@ -16,7 +34,7 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 
-// অ্যাসেট ইমপোর্ট
+// অ্যাসেট ইমপোর্ট (অপরিবর্তিত)
 import tshirtImage from "@/assets/product-tshirt.jpg";
 import poloImage from "@/assets/product-polo.jpg";
 import hoodieImage from "@/assets/product-hoodie.jpg";
@@ -81,70 +99,51 @@ const allProducts = [
     },
 ];
 
-// ফিল্টার অপশন
+// ফিল্টার অপশন (অপরিবর্তিত)
 const categories = ["All", "Cotton Essentials", "Business Casual", "Comfort Wear", "Denim Collection", "Knitwear", "Performance"];
 
-// একটি পুনঃব্যবহারযোগ্য প্রোডাক্ট কার্ড কম্পোনেন্ট
+// ✨ নতুন ডিজাইনের প্রোডাক্ট কার্ড
 const ProductCard = ({ title, description, image, category, price, rating, featured }: typeof allProducts[0]) => (
-    <div className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-        <div className="aspect-[4/5] overflow-hidden bg-gray-100 relative">
-            <img
-                src={image}
-                alt={title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            {featured && (
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Featured
-                </div>
-            )}
-            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                <Tag className="w-3 h-3 text-blue-600" /> {category}
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <CardContent className="p-0">
+            <div className="aspect-[4/5] overflow-hidden relative bg-gray-100">
+                <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {featured && (
+                    <div className="absolute top-3 left-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                        Featured
+                    </div>
+                )}
             </div>
-            <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-2">
-                    Quick View
-                </Button>
-            </div>
-        </div>
-        <div className="p-6">
-            <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-bold text-gray-900">
+            <div className="p-4">
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider">{category}</span>
+                <CardTitle className="mt-1 mb-2 text-lg font-bold text-foreground line-clamp-1">
                     {title}
-                </h3>
-                <span className="text-2xl font-bold text-blue-600">{price}</span>
+                </CardTitle>
+                <CardDescription className="text-sm line-clamp-2 h-[40px]">
+                    {description}
+                </CardDescription>
             </div>
-            <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                    <Star
-                        key={i}
-                        className={`w-4 h-4 ${i < Math.floor(rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                    />
-                ))}
-                <span className="text-sm text-gray-600 ml-1">({rating})</span>
+        </CardContent>
+        <CardFooter className="flex justify-between items-center p-4 pt-0">
+            <div className="text-xl font-bold text-foreground">{price}</div>
+            <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 fill-primary text-primary" />
+                <span className="text-sm text-muted-foreground font-medium">{rating}</span>
             </div>
-            <p className="text-gray-600 mb-4 leading-relaxed line-clamp-2">
-                {description}
-            </p>
-            <div className="flex justify-between items-center">
-                <Button variant="outline" size="sm" className="border-gray-300 hover:bg-gray-50">
-                    Add to Cart
-                </Button>
-                <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 font-semibold">
-                    View Details <ArrowRight className="ml-1 w-4 h-4" />
-                </Button>
-            </div>
-        </div>
-    </div>
+        </CardFooter>
+    </Card>
 );
 
-const ProductsPage = () => {
 
+const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [headerLoaded, setHeaderLoaded] = useState(false);
 
-    // useEffect: হেডার অ্যানিমেশনের জন্য
     useEffect(() => {
         const timer = setTimeout(() => {
             setHeaderLoaded(true);
@@ -152,28 +151,20 @@ const ProductsPage = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    // ফিল্টারিং লজিক
     const filteredProducts = allProducts.filter(product =>
         selectedCategory === "All" || product.category === selectedCategory
     );
 
-    // ক্যাটাগরি বাটন রেন্ডার করার জন্য ফাংশন
+    // ক্যাটাগরি বাটন রেন্ডার করার ফাংশন (স্টাইল আপডেট করা হয়েছে)
     const renderCategoryButtons = () => (
         categories.map((cat) => (
             <Button
                 key={cat}
-                // 'All' সিলেক্টেড থাকলে, বাটনটি default (নীল) থাকবে
-                variant={cat === selectedCategory ? "default" : "outline"}
-                className={`
-                    ${cat === selectedCategory
-                    ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
-                    : "border-gray-300 hover:bg-gray-100 text-gray-800"
-                }
-                    w-full md:w-auto
-                `}
+                variant={cat === selectedCategory ? "default" : "outline"} // শুধু ভ্যারিয়েন্ট ব্যবহার
+                className="w-full md:w-auto transition-all duration-200"
                 onClick={() => {
                     setSelectedCategory(cat);
-                    setIsDrawerOpen(false); // বাটন ক্লিক করলে ড্রয়ার বন্ধ হবে
+                    setIsDrawerOpen(false);
                 }}
             >
                 {cat}
@@ -185,61 +176,49 @@ const ProductsPage = () => {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {/* পেজ হেডার: স্টাইলিশ ব্যাকগ্রাউন্ড ও অ্যানিমেশন */}
-            <section className="relative pt-28 pb-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white overflow-hidden">
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/40"></div>
-
-                {/* ডেকোরেটিভ ব্যাকগ্রাউন্ড প্যাটার্ন (Dots) */}
-                <div className="absolute inset-0 z-0 opacity-20">
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <pattern id="pattern-circles" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                            <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.1)" />
-                        </pattern>
-                        <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)" />
-                    </svg>
-                </div>
-
-                {/* কন্টেন্ট এবং অ্যানিমেশন */}
+            {/* ✨ নতুন হেডার সেকশন (ব্রেডক্রাম্ব সহ) */}
+            <section className="pt-28 pb-12 bg-white border-b border-gray-200">
                 <div className={cn(
-                    "container mx-auto px-6 relative z-10 text-center transition-all duration-1000 ease-out",
+                    "container mx-auto px-6 transition-all duration-1000 ease-out",
                     headerLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
                 )}>
-                    <div className="max-w-3xl mx-auto">
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Premium Collections
-                        </h1>
-                        <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                            Discover our exquisite range of premium knitwear and textile products,
-                            meticulously crafted with superior quality materials for the global market.
-                        </p>
-                        <div className="flex gap-4 justify-center">
-                            <Button className="bg-white text-gray-900 hover:bg-gray-100 font-semibold px-8 py-3">
-                                Shop Now
-                            </Button>
-                            <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8 py-3">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
+                    <Breadcrumb className="mb-4">
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/" className="flex items-center gap-1">
+                                    <Home className="w-4 h-4" />
+                                    Home
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>Collections</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                        Our Collections
+                    </h1>
+                    <p className="text-lg text-muted-foreground mt-2 max-w-2xl">
+                        Discover our exquisite range of premium knitwear and textile products.
+                    </p>
                 </div>
             </section>
 
-            {/* ফিল্টার সেকশন */}
-            <section className="py-4 md:py-8 bg-white border-b border-gray-200 sticky top-[65px] z-30 shadow-sm">
+            {/* ফিল্টার সেকশন (অপরিবর্তিত, শুধু স্টিকি টপ ভ্যালু আপডেট) */}
+            <section className="py-4 md:py-6 bg-white border-b border-gray-200 sticky top-[65px] z-30 shadow-sm">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-wrap gap-4 justify-between items-center">
-
-                        {/* === ডেস্কটপ ফিল্টার === (মোবাইলে হাইড থাকবে) */}
+                        {/* ডেস্কটপ ফিল্টার */}
                         <div className="hidden md:flex flex-wrap gap-2">
                             {renderCategoryButtons()}
                         </div>
 
-                        {/* === মোবাইল ফিল্টার ড্রয়ার === (মোবাইলে দৃশ্যমান) */}
+                        {/* মোবাইল ফিল্টার ড্রয়ার */}
                         <div className="md:hidden">
                             <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                                 <DrawerTrigger asChild>
-                                    <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-gray-800">
+                                    <Button variant="outline">
                                         <Filter className="w-4 h-4 mr-2" />
                                         Filter Categories
                                     </Button>
@@ -248,7 +227,6 @@ const ProductsPage = () => {
                                     <DrawerHeader>
                                         <DrawerTitle>Filter by Category</DrawerTitle>
                                     </DrawerHeader>
-                                    {/* ড্রয়ারের ভিতরে বাটনগুলো ২ কলামে দেখানো হচ্ছে */}
                                     <div className="p-4 grid grid-cols-2 gap-2">
                                         {renderCategoryButtons()}
                                     </div>
@@ -262,53 +240,35 @@ const ProductsPage = () => {
                         </div>
 
                         {/* প্রোডাক্ট কাউন্ট */}
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-muted-foreground font-medium">
                             Showing {filteredProducts.length} products
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* প্রোডাক্ট গ্রিড */}
+            {/* প্রোডাক্ট গ্রিড (অপরিবর্তিত) */}
             <section className="py-16 flex-1">
                 <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                         {filteredProducts.map((product, index) => (
                             <ProductCard
                                 key={index}
-                                title={product.title}
-                                description={product.description}
-                                image={product.image}
-                                category={product.category}
-                                price={product.price}
-                                rating={product.rating}
-                                featured={product.featured}
+                                {...product} // সহজ props পাসিং
                             />
                         ))}
                     </div>
 
-                    {/* যদি কোনো প্রোডাক্ট না পাওয়া যায় */}
                     {filteredProducts.length === 0 && (
                         <div className="text-center py-20">
                             <h3 className="text-2xl font-semibold text-gray-700">No Products Found</h3>
-                            <p className="text-gray-500 mt-2">Try selecting a different category.</p>
+                            <p className="text-muted-foreground mt-2">Try selecting a different category.</p>
                         </div>
                     )}
                 </div>
             </section>
 
-            {/* CTA সেকশন (অপরিবর্তিত) */}
-            <section className="py-16 bg-gray-900 text-white">
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-4xl font-bold mb-4">Ready to Elevate Your Style?</h2>
-                    <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                        Join thousands of satisfied customers who trust our premium quality products.
-                    </p>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 text-lg">
-                        Start Shopping Today
-                    </Button>
-                </div>
-            </section>
+            {/* ✨ নিচের CTA সেকশনটি রিমুভ করা হয়েছে */}
 
             <Footer />
         </div>
