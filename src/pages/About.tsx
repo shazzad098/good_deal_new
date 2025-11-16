@@ -1,13 +1,26 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Building, CheckCircle, Leaf, Globe } from "lucide-react";
+// ✨ Home আইকন ইমপোর্ট করা হয়েছে এবং Building আইকন রিমুভ করা হয়েছে
+import { Target, Users, CheckCircle, Leaf, Globe, Home } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
+// ✨ Breadcrumb কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 // বিদ্যমান অ্যাসেটগুলো পুনঃব্যবহার করা হচ্ছে
 import factoryImage from "@/assets/hero-factory.jpg";
+import teamImage1 from "@/assets/hero-worker.jpg";
+import teamImage2 from "@/assets/quality-control.jpg";
 
 const AboutPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -23,22 +36,32 @@ const AboutPage = () => {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {/* পেজ হেডার */}
-            <section className={cn(
-                "relative pt-28 pb-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white overflow-hidden transition-all duration-1000 ease-out",
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-            )}>
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <div className="max-w-3xl mx-auto">
-                        <Building className="w-16 h-16 text-white mx-auto mb-6" />
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            About Good Deal
-                        </h1>
-                        <p className="text-xl text-gray-200 leading-relaxed">
-                            Pioneering textile excellence through innovation, quality, and sustainable practices for a global market.
-                        </p>
-                    </div>
+            {/* ✨ নতুন সিম্পল হেডার (আগের সেকশনটি প্রতিস্থাপন করা হয়েছে) */}
+            <section className="pt-28 pb-12 bg-white border-b border-gray-200">
+                <div className={cn(
+                    "container mx-auto px-6 transition-all duration-1000 ease-out",
+                    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+                )}>
+                    <Breadcrumb className="mb-4">
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/" className="flex items-center gap-1">
+                                    <Home className="w-4 h-4" />
+                                    Home
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>About Us</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                        About Good Deal
+                    </h1>
+                    <p className="text-lg text-muted-foreground mt-2 max-w-2xl">
+                        Pioneering textile excellence through innovation, quality, and sustainable practices.
+                    </p>
                 </div>
             </section>
 
@@ -105,7 +128,6 @@ const AboutPage = () => {
                 </div>
             </section>
 
-            {/* Meet The Team সেকশন */}
             
 
             <Footer />

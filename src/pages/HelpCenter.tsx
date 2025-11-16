@@ -1,8 +1,8 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { LifeBuoy, Search, BookOpen, ShieldCheck } from "lucide-react";
+// ✨ Home আইকন ইমপোর্ট করা হয়েছে এবং অপ্রয়োজনীয় আইকন (LifeBuoy, Search) রিমুভ করা হয়েছে
+import { Home, BookOpen, ShieldCheck } from "lucide-react";
 import {
     Accordion,
     AccordionContent,
@@ -10,6 +10,18 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"; // ✨ অ্যানিমেশনের জন্য ইমপোর্ট
+import { cn } from "@/lib/utils"; // ✨ অ্যানিমেশনের জন্য ইমপোর্ট
+
+// ✨ Breadcrumb কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const faqs = [
     {
@@ -31,31 +43,46 @@ const faqs = [
 ];
 
 const HelpCenter = () => {
+    // ✨ অ্যানিমেশনের জন্য স্টেট
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {/* পেজ হেডার */}
-            <section className="relative pt-28 pb-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <div className="max-w-3xl mx-auto">
-                        <LifeBuoy className="w-16 h-16 text-white mx-auto mb-6" />
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Help Center
-                        </h1>
-                        <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                            How can we help you today? Find answers to common questions below or search for your topic.
-                        </p>
-                        <div className="relative max-w-lg mx-auto">
-                            <Input
-                                type="search"
-                                placeholder="Search for answers (e.g., shipping, MOQ...)"
-                                className="w-full h-12 pl-12 pr-4 text-gray-900 rounded-full"
-                            />
-                            <Search className="w-5 h-5 text-gray-500 absolute left-5 top-1/2 -translate-y-1/2" />
-                        </div>
-                    </div>
+            {/* ✨ নতুন সিম্পল হেডার (আগের সেকশনটি প্রতিস্থাপন করা হয়েছে) */}
+            <section className="pt-28 pb-12 bg-white border-b border-gray-200">
+                <div className={cn(
+                    "container mx-auto px-6 transition-all duration-1000 ease-out",
+                    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+                )}>
+                    <Breadcrumb className="mb-4">
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/" className="flex items-center gap-1">
+                                    <Home className="w-4 h-4" />
+                                    Home
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>Help Center</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                        Help Center
+                    </h1>
+                    <p className="text-lg text-muted-foreground mt-2 max-w-2xl">
+                        How can we help you today? Find answers to common questions below.
+                    </p>
                 </div>
             </section>
 
@@ -68,15 +95,15 @@ const HelpCenter = () => {
                             <h3 className="text-xl font-bold text-gray-900 mb-4">Support Topics</h3>
                             <ul className="space-y-2">
                                 <li>
-                                    <Button variant="ghost" className="w-full justify-start text-blue-600 bg-blue-50">Frequently Asked Questions</Button>
+                                    <Button variant="ghost" className="w-full justify-start text-primary bg-primary/10">Frequently Asked Questions</Button>
                                 </li>
                                 <li>
-                                    <Button variant="ghost" asChild className="w-full justify-start text-gray-700">
+                                    <Button variant="ghost" asChild className="w-full justify-start text-gray-700 hover:bg-gray-100 hover:text-foreground">
                                         <Link to="/documentation">Documentation</Link>
                                     </Button>
                                 </li>
                                 <li>
-                                    <Button variant="ghost" asChild className="w-full justify-start text-gray-700">
+                                    <Button variant="ghost" asChild className="w-full justify-start text-gray-700 hover:bg-gray-100 hover:text-foreground">
                                         <Link to="/quality-guide">Quality Guide</Link>
                                     </Button>
                                 </li>
@@ -94,7 +121,7 @@ const HelpCenter = () => {
                                         <AccordionTrigger className="text-lg font-semibold text-gray-800 text-left hover:no-underline">
                                             {faq.q}
                                         </AccordionTrigger>
-                                        <AccordionContent className="text-gray-600 leading-relaxed">
+                                        <AccordionContent className="text-gray-600 leading-relaxed pt-2">
                                             {faq.a}
                                         </AccordionContent>
                                     </AccordionItem>

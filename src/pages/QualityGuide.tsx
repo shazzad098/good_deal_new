@@ -1,9 +1,32 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { ShieldCheck, CheckCircle } from "lucide-react";
+// ✨ Home আইকন ইমপোর্ট করা হয়েছে, ShieldCheck রিমুভ করা হয়েছে
+import { CheckCircle, Home } from "lucide-react";
 import qualityImage from "@/assets/quality-control.jpg"; // আপনার বিদ্যমান কোয়ালিটি ইমেজ
 
+// ✨ অ্যানিমেশন এবং ব্রেডক্রাম্ব এর জন্য ইমপোর্ট
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 const QualityGuide = () => {
+    // ✨ অ্যানিমেশনের জন্য স্টেট
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     const qualitySteps = [
         "Step 1: Raw Material Inspection",
         "Step 2: Fabric Weaving & Knitting Control",
@@ -17,23 +40,36 @@ const QualityGuide = () => {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {/* পেজ হেডার */}
-            <section className="relative pt-28 pb-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <div className="max-w-3xl mx-auto">
-                        <ShieldCheck className="w-16 h-16 text-white mx-auto mb-6" />
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Our Quality Guide
-                        </h1>
-                        <p className="text-xl text-gray-200 leading-relaxed">
-                            Our commitment to excellence is woven into every fiber of our products.
-                        </p>
-                    </div>
+            {/* ✨ নতুন সিম্পল হেডার (আগের সেকশনটি প্রতিস্থাপন করা হয়েছে) */}
+            <section className="pt-28 pb-12 bg-white border-b border-gray-200">
+                <div className={cn(
+                    "container mx-auto px-6 transition-all duration-1000 ease-out",
+                    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+                )}>
+                    <Breadcrumb className="mb-4">
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/" className="flex items-center gap-1">
+                                    <Home className="w-4 h-4" />
+                                    Home
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>Quality Guide</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                        Our Quality Guide
+                    </h1>
+                    <p className="text-lg text-muted-foreground mt-2 max-w-2xl">
+                        Our commitment to excellence is woven into every fiber of our products.
+                    </p>
                 </div>
             </section>
 
-            {/* কন্টেন্ট সেকশন */}
+            {/* কন্টেন্ট সেকশন (অপরিবর্তিত) */}
             <section className="py-16 md:py-24 flex-1">
                 <div className="container mx-auto px-6">
                     <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
