@@ -14,6 +14,9 @@ import QualityGuidePage from "./pages/QualityGuide";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/ContactPage";
 
+// ✨ ধাপ ৩.১: নতুন প্রোডাক্ট ডিটেইল পেজ ইমপোর্ট করুন
+import ProductDetailPage from "./pages/ProductDetailPage"; 
+
 // ✨ ScrollToTop কম্পোনেন্ট ইমপোর্ট করা হয়েছে
 import ScrollToTop from "./components/layout/ScrollToTop";
 
@@ -30,6 +33,10 @@ const App = () => (
                 <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/products" element={<ProductsPage />} />
+                    
+                    {/* ✨ ধাপ ৩.২: নতুন রুটটি এখানে যোগ করুন */}
+                    <Route path="/products/:slug" element={<ProductDetailPage />} />
+                    
                     <Route path="/help" element={<HelpCenterPage />} />
                     <Route path="/documentation" element={<DocumentationPage />} />
                     <Route path="/quality-guide" element={<QualityGuidePage />} />

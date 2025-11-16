@@ -2,10 +2,14 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Tag, Star, Filter, Home } from "lucide-react"; // Home আইকন ইমপোর্ট করা হয়েছে
+import { Tag, Star, Filter, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom"; // ✨ Link ইমপোর্ট করা হয়েছে
 
-// Card কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+// ✨ ডেটা এখন নতুন ফাইল থেকে ইমপোর্ট করা হচ্ছে
+import { allProducts, categories, slugify } from "@/data/products";
+
+// Card কম্পোনেন্ট ইমপোর্ট
 import {
     Card,
     CardContent,
@@ -14,7 +18,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-// Breadcrumb কম্পোনেন্ট ইমপোর্ট করা হয়েছে
+// Breadcrumb কম্পোনেন্ট ইমপোর্ট
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -24,6 +28,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
+// Drawer কম্পোনেন্ট ইমপোর্ট
 import {
     Drawer,
     DrawerClose,
@@ -34,77 +39,10 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 
-// অ্যাসেট ইমপোর্ট (অপরিবর্তিত)
-import tshirtImage from "@/assets/product-tshirt.jpg";
-import poloImage from "@/assets/product-polo.jpg";
-import hoodieImage from "@/assets/product-hoodie.jpg";
-import denimImage from "@/assets/product-denim.jpg";
-import sweaterImage from "@/assets/hero-fabrics.jpg";
-import sportswearImage from "@/assets/hero-worker.jpg";
 
-const allProducts = [
-    {
-        title: "Premium T-Shirts",
-        description: "100% cotton comfort for everyday wear with superior breathability and softness.",
-        image: tshirtImage,
-        category: "Cotton Essentials",
-        price: "$29.99",
-        rating: 4.8,
-        featured: true
-    },
-    {
-        title: "Classic Polo Shirts",
-        description: "Timeless style meets modern quality with premium fabric and perfect fit.",
-        image: poloImage,
-        category: "Business Casual",
-        price: "$45.99",
-        rating: 4.6,
-        featured: false
-    },
-    {
-        title: "Premium Hoodies",
-        description: "Cozy warmth with superior craftsmanship and durable construction.",
-        image: hoodieImage,
-        category: "Comfort Wear",
-        price: "$69.99",
-        rating: 4.9,
-        featured: true
-    },
-    {
-        title: "Durable Denim",
-        description: "Premium denim built to last with exceptional comfort and style.",
-        image: denimImage,
-        category: "Denim Collection",
-        price: "$89.99",
-        rating: 4.7,
-        featured: false
-    },
-    {
-        title: "Knit Sweaters",
-        description: "Elegant and warm for all seasons with luxurious texture and finish.",
-        image: sweaterImage,
-        category: "Knitwear",
-        price: "$79.99",
-        rating: 4.8,
-        featured: true
-    },
-    {
-        title: "Active Sportswear",
-        description: "Performance fabrics for an active life with moisture-wicking technology.",
-        image: sportswearImage,
-        category: "Performance",
-        price: "$54.99",
-        rating: 4.5,
-        featured: false
-    },
-];
-
-// ফিল্টার অপশন (অপরিবর্তিত)
-const categories = ["All", "Cotton Essentials", "Business Casual", "Comfort Wear", "Denim Collection", "Knitwear", "Performance"];
-
-// ✨ নতুন ডিজাইনের প্রোডাক্ট কার্ড
+// ✨ প্রোডাক্ট কার্ড আপডেট: cursor-pointer যোগ করা হয়েছে
 const ProductCard = ({ title, description, image, category, price, rating, featured }: typeof allProducts[0]) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
         <CardContent className="p-0">
             <div className="aspect-[4/5] overflow-hidden relative bg-gray-100">
                 <img
@@ -129,7 +67,7 @@ const ProductCard = ({ title, description, image, category, price, rating, featu
             </div>
         </CardContent>
         <CardFooter className="flex justify-between items-center p-4 pt-0">
-            <div className="text-xl font-bold text-foreground">{price}</div>
+            <div className="text-2xl font-bold text-primary">{price}</div>
             <div className="flex items-center gap-1">
                 <Star className="w-4 h-4 fill-primary text-primary" />
                 <span className="text-sm text-muted-foreground font-medium">{rating}</span>
@@ -140,6 +78,7 @@ const ProductCard = ({ title, description, image, category, price, rating, featu
 
 
 const ProductsPage = () => {
+    // ... (useState, useEffect, filteredProducts অপরিবর্তিত) ...
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [headerLoaded, setHeaderLoaded] = useState(false);
@@ -155,7 +94,7 @@ const ProductsPage = () => {
         selectedCategory === "All" || product.category === selectedCategory
     );
 
-    // ক্যাটাগরি বাটন রেন্ডার করার ফাংশন (স্টাইল আপডেট করা হয়েছে)
+    // ... (renderCategoryButtons অপরিবর্তিত) ...
     const renderCategoryButtons = () => (
         categories.map((cat) => (
             <Button
@@ -176,7 +115,7 @@ const ProductsPage = () => {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {/* ✨ নতুন হেডার সেকশন (ব্রেডক্রাম্ব সহ) */}
+            {/* হেডার সেকশন (অপরিবর্তিত) */}
             <section className="pt-28 pb-12 bg-white border-b border-gray-200">
                 <div className={cn(
                     "container mx-auto px-6 transition-all duration-1000 ease-out",
@@ -205,7 +144,7 @@ const ProductsPage = () => {
                 </div>
             </section>
 
-            {/* ফিল্টার সেকশন (অপরিবর্তিত, শুধু স্টিকি টপ ভ্যালু আপডেট) */}
+            {/* ফিল্টার সেকশন (অপরিবর্তিত) */}
             <section className="py-4 md:py-6 bg-white border-b border-gray-200 sticky top-[65px] z-30 shadow-sm">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-wrap gap-4 justify-between items-center">
@@ -214,7 +153,7 @@ const ProductsPage = () => {
                             {renderCategoryButtons()}
                         </div>
 
-                        {/* মোবাইল ফিল্টার ড্রয়ার */}
+                        {/* মোবাইল ফিল্টার ড্রয়ার */}
                         <div className="md:hidden">
                             <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                                 <DrawerTrigger asChild>
@@ -247,15 +186,21 @@ const ProductsPage = () => {
                 </div>
             </section>
 
-            {/* প্রোডাক্ট গ্রিড (অপরিবর্তিত) */}
+            {/* প্রোডাক্ট গ্রিড */}
             <section className="py-16 flex-1">
                 <div className="container mx-auto px-6">
+                    {/* ✨ পরিবর্তন: গ্রিডের প্রতিটি আইটেমকে Link দিয়ে Wrap করা হয়েছে */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                         {filteredProducts.map((product, index) => (
-                            <ProductCard
+                            <Link 
+                                to={`/products/${slugify(product.title)}`} 
                                 key={index}
-                                {...product} // সহজ props পাসিং
-                            />
+                                className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
+                            >
+                                <ProductCard
+                                    {...product}
+                                />
+                            </Link>
                         ))}
                     </div>
 
@@ -268,7 +213,6 @@ const ProductsPage = () => {
                 </div>
             </section>
 
-            {/* ✨ নিচের CTA সেকশনটি রিমুভ করা হয়েছে */}
 
             <Footer />
         </div>
