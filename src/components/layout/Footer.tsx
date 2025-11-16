@@ -31,9 +31,7 @@ const Footer = () => {
 
     const footerLinks = {
         company: [
-            { name: "About Us", href: "/about" }, // ✨ পরিবর্তনটি এখানে করা হয়েছে
-            { name: "Our Team", href: "/about" }, // বোনাস: 'Our Team' লিঙ্কটিও About পেজে পাঠালাম
-            { name: "Careers", href: "#" }, // এটি আপাতত # থাকছে
+            { name: "About Us", href: "/about" }, 
         ],
         products: [
             { name: "All Collections", href: "/products" },
