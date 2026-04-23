@@ -3,70 +3,11 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
 
-const solutions = [
-  {
-    id: 1,
-    title: "Utility Scale Solar Power Plant",
-    description: "Large-scale solar installations designed to generate bulk power for the grid, maximizing energy output and land utilization.",
-    image: "https://images.unsplash.com/photo-1629726797843-618688139f5a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: 2,
-    title: "Industrial Rooftop PV System",
-    description: "Optimized solar systems for industrial facilities, reducing operational costs and carbon footprint efficiently.",
-    image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=1200",
-  },
-  {
-    id: 3,
-    title: "Battery Energy Storage System",
-    description: "Advanced energy storage solutions ensuring reliable power supply and grid stability around the clock.",
-    image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&q=80&w=1200",
-  },
-  {
-    id: 4,
-    title: "Residential PV Solution",
-    description: "Tailored solar power systems for homes, bringing sustainable and independent energy to your household.",
-    image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200",
-  },
-  {
-    id: 5,
-    title: "Solar Irrigation System",
-    description: "Eco-friendly solar-powered pumps and irrigation setups to support sustainable agricultural practices.",
-    image: "https://media.istockphoto.com/id/1322433940/photo/solar-panels-which-can-run-submerge-water-pump-for-irrigation-and-distribution-of-water-in.jpg?s=612x612&w=0&k=20&c=ARL_MdUeMQ06smgbYUnlDDRa3mq3txPxvrX6JFp7ov4=",
-  },
-  {
-    id: 6,
-    title: "Floating Solar PV System",
-    description: "Innovative solar installations on water bodies, saving land space and increasing panel efficiency through natural cooling.",
-    image: "https://media.istockphoto.com/id/2244092029/photo/drone-view-of-floating-solar-panel-solar-photovoltaic-panel-pv-system-in-industry-lake-water.jpg?s=612x612&w=0&k=20&c=H3hF5HaAGXnub8SPTKCrIEW3YSIaZ_qP54FAOvmPxu8=",
-  },
-  {
-    id: 7,
-    title: "Building Integrated PV solution",
-    description: "Seamlessly integrated solar panels into building architecture, combining aesthetic design with energy generation.",
-    image: "https://media.istockphoto.com/id/2159449289/photo/office-building-rooftop-solar-power-generation.jpg?s=612x612&w=0&k=20&c=i79dSNpDecCtn_OJ69Y8PCMTtdqwqOwHbP9fN-Oz9zc=",
-  },
-  {
-    id: 8,
-    title: "Solar Carport & EV Solution",
-    description: "Dual-purpose solar structures that provide shade for vehicles while generating clean energy for EV charging.",
-    image: "https://media.istockphoto.com/id/2220975356/photo/aaerial-view-of-solar-panels-installed-as-shade-roof-over-parking-lot-for-parked-cars.jpg?s=612x612&w=0&k=20&c=d-Qt0MI-ZZAoKpq4cAQobnlY9CxKrqzjE-vPWtlnP88=",
-  },
-  {
-    id: 9,
-    title: "Energy Monitoring System",
-    description: "Real-time tracking and analytics platforms to optimize energy consumption and system performance.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-  },
-  {
-    id: 10,
-    title: "SCADA Solution",
-    description: "Supervisory Control and Data Acquisition systems for precise management and control of solar infrastructure.",
-    image: "https://media.istockphoto.com/id/2270785686/photo/workers-checking-steel-material-at-power-transmission-tower-construction-site.jpg?s=612x612&w=0&k=20&c=TRSdmHc_PKkv0YrCSG5JD5yDZ08cKdqfPwMJWm-hxSE=",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import { solarProducts as solutions } from "../data/solarProducts";
 
 export default function SolarSolutions() {
+  const navigate = useNavigate();
   useReveal();
 
   useEffect(() => {
@@ -125,7 +66,11 @@ export default function SolarSolutions() {
                 <h2>{item.title}</h2>
                 <div className="divider" style={{ margin: "20px 0" }} />
                 <p>{item.description}</p>
-                <button className="btn-outline" style={{ marginTop: "32px", padding: "10px 24px" }}>
+                <button 
+                  className="btn-outline" 
+                  style={{ marginTop: "32px", padding: "10px 24px" }}
+                  onClick={() => navigate(`/sustainable-solar-solutions/${item.id}`)}
+                >
                   Learn More
                 </button>
               </div>

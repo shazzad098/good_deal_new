@@ -5,6 +5,8 @@ import { sendInquiry, INQUIRY_EMAIL } from "./lib/sendInquiry";
 import { services, type ServiceCardData } from "./data/services";
 import SolarSolutions from "./pages/SolarSolutions";
 import FireSafetySolutions from "./pages/FireSafetySolutions";
+import FireSafetyProductDetail from "./pages/FireSafetyProductDetail";
+import SolarProductDetail from "./pages/SolarProductDetail";
 
 /* ----------------- Service icons ----------------- */
 function ServiceIcon({ kind }: { kind: ServiceCardData["icon"] }) {
@@ -672,7 +674,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/sustainable-solar-solutions" element={<SolarSolutions />} />
+      <Route path="/sustainable-solar-solutions/:id" element={<SolarProductDetail />} />
       <Route path="/fire-life-safety-solutions" element={<FireSafetySolutions />} />
+      <Route path="/fire-life-safety-solutions/:id" element={<FireSafetyProductDetail />} />
     </Routes>
   );
 }
