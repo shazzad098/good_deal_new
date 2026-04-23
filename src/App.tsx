@@ -1,7 +1,10 @@
 import { useState, type FormEvent } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useReveal } from "./hooks/useReveal";
 import { sendInquiry, INQUIRY_EMAIL } from "./lib/sendInquiry";
 import { services, type ServiceCardData } from "./data/services";
+import SolarSolutions from "./pages/SolarSolutions";
+import FireSafetySolutions from "./pages/FireSafetySolutions";
 
 /* ----------------- Service icons ----------------- */
 function ServiceIcon({ kind }: { kind: ServiceCardData["icon"] }) {
@@ -92,8 +95,24 @@ function HighlightIcon({ name }: { name: string }) {
 
 /* ----------------- Service Card ----------------- */
 function ServiceCard({ data }: { data: ServiceCardData }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (data.num === "04") {
+      navigate("/sustainable-solar-solutions");
+    } else if (data.num === "02") {
+      navigate("/fire-life-safety-solutions");
+    }
+  };
+
+  const isClickable = data.num === "04" || data.num === "02";
+
   return (
-    <article className="service-card reveal">
+    <article 
+      className="service-card reveal" 
+      onClick={handleClick}
+      style={isClickable ? { cursor: "pointer" } : undefined}
+    >
       <div className="sc-bg" style={{ backgroundImage: `url(${data.image})` }} />
       <div className="sc-overlay" />
       <span className="service-num">{data.num}</span>
@@ -152,7 +171,7 @@ function ContactForm() {
   };
 
   return (
-    <form className="contact-form reveal" onSubmit={onSubmit} noValidate>
+    <form className="contact-form" onSubmit={onSubmit} noValidate>
       <div className="form-row">
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
@@ -202,7 +221,7 @@ function ContactForm() {
 /* ============================================================ */
 /*                       MAIN APP                                */
 /* ============================================================ */
-export default function App() {
+function Home() {
   useReveal();
 
   const heroVideos = [
@@ -211,6 +230,7 @@ export default function App() {
 
   ];
   const [videoIndex, setVideoIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -234,7 +254,7 @@ export default function App() {
             <a href="#contact">Contact</a>
           </li>
         </ul>
-        <a href="#contact" className="nav-cta">
+        <a href="#contact" className="nav-cta" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}>
           Get in Touch
         </a>
       </nav>
@@ -250,9 +270,8 @@ export default function App() {
           onEnded={() => setVideoIndex((prev) => (prev + 1) % heroVideos.length)}
           src={heroVideos[videoIndex]}
         />
-        <div className="hero-video-overlay" />
 
-        <div className="hero-bg-lines" />
+
         <div className="hero-bg-glow" />
         <div className="hero-bg-glow2" />
 
@@ -304,6 +323,30 @@ export default function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="services" id="services">
+        <div className="section-label">
+          <span>Core Services</span>
+        </div>
+        <div className="services-intro">
+          <h2 className="section-title reveal">
+            Five Verticals of
+            <br />
+            <em>Engineering Excellence</em>
+          </h2>
+          <p className="reveal">
+            End-to-end turnkey solutions engineered to the highest global standards, delivered with local expertise
+            and direct-import reliability.
+          </p>
+        </div>
+
+        <div className="services-grid">
+          {services.map((s) => (
+            <ServiceCard key={s.num} data={s} />
+          ))}
         </div>
       </section>
 
@@ -398,44 +441,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="services" id="services">
-        <div className="section-label">
-          <span>Core Services</span>
-        </div>
-        <div className="services-intro">
-          <h2 className="section-title reveal">
-            Five Verticals of
-            <br />
-            <em>Engineering Excellence</em>
-          </h2>
-          <p className="reveal">
-            End-to-end turnkey solutions engineered to the highest global standards, delivered with local expertise
-            and direct-import reliability.
-          </p>
-        </div>
-
-        <div className="services-grid">
-          {services.map((s) => (
-            <ServiceCard key={s.num} data={s} />
-          ))}
-
-          {/* CTA card */}
-          <div className="service-cta-card reveal">
-            <div className="section-label" style={{ marginBottom: 4 }}>
-              <span>Our Commitment</span>
-            </div>
-            <h3>IEC &amp; NFPA Compliant on Every Project</h3>
-            <p>
-              Every solution we deliver meets or exceeds international safety and engineering standards. From
-              procurement to commissioning, quality is non-negotiable.
-            </p>
-            <a href="#contact" className="btn-primary" style={{ marginTop: 6 }}>
-              Request a Consultation
-            </a>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ADVANTAGES */}
       <section className="advantages" id="advantages">
@@ -616,23 +622,31 @@ export default function App() {
             </div>
           </div>
 
-          <div className="contact-right-panel">
-            <div className="contact-map reveal">
-              <iframe
-                title="Good Deal Office Location"
-                src="https://maps.google.com/maps?q=163/6%20Tejkunipara%20Road,%20Tejgaon,%20Dhaka&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="220"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+          <div className="contact-right-panel" style={{ width: "100%" }}>
+            <div className="contact-map reveal" style={{ height: "450px", overflow: "hidden", borderRadius: "var(--radius)" }}>
+              <video
+                src="/connect.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
             </div>
-            <ContactForm />
           </div>
         </div>
       </section>
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setIsModalOpen(false)}>✕</button>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "32px", color: "var(--gold)", marginBottom: "24px", fontWeight: 400 }}>Send an Inquiry</h3>
+            <ContactForm />
+          </div>
+        </div>
+      )}
 
       {/* FOOTER */}
       <footer className="gd-footer">
@@ -650,5 +664,15 @@ export default function App() {
         </div>
       </footer>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/sustainable-solar-solutions" element={<SolarSolutions />} />
+      <Route path="/fire-life-safety-solutions" element={<FireSafetySolutions />} />
+    </Routes>
   );
 }

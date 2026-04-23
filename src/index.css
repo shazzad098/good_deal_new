@@ -1207,3 +1207,230 @@ footer.gd-footer {
     padding: 80px 6%;
   }
 }
+
+/* ---------------- SOLAR SOLUTIONS ---------------- */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+.product-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.product-row:nth-child(even) .product-image-container {
+  order: 2;
+}
+.product-row:nth-child(even) .product-info-container {
+  order: 1;
+}
+
+.product-image-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 480px;
+}
+.product-stock-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.product-image-container:hover .product-stock-image {
+  transform: scale(1.05);
+}
+.image-overlay-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11, 15, 20, 0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.product-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(196, 154, 60, 0.15);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+.product-info-container h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+  margin-top: 10px;
+}
+.product-info-container p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 500px;
+}
+
+@media (max-width: 900px) {
+  .product-list {
+    gap: 80px;
+  }
+  .product-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .product-row:nth-child(even) .product-image-container {
+    order: 0;
+  }
+  .product-row:nth-child(even) .product-info-container {
+    order: 1;
+  }
+  .product-image-container {
+    height: 320px;
+  }
+}
+
+/* ---------------- FIRE SAFETY SOLUTIONS ---------------- */
+.fire-safety-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 80px 40px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.fire-circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 320px;
+  transition: transform 0.4s ease;
+  cursor: default;
+}
+.fire-circle-card:hover {
+  transform: translateY(-10px);
+}
+.fire-circle-image {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  padding: 8px;
+  position: relative;
+  margin-bottom: 28px;
+  transition: border-color 0.4s ease;
+  background: var(--dark);
+}
+.fire-circle-card:hover .fire-circle-image {
+  border-color: rgba(212, 70, 70, 0.6);
+}
+.fire-circle-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.fire-circle-card:hover .fire-circle-image img {
+  transform: scale(1.05);
+}
+.fire-circle-image-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: var(--dark);
+}
+.fire-circle-glow {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 70, 70, 0.15) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.fire-circle-card:hover .fire-circle-glow {
+  opacity: 1;
+}
+.fire-circle-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.fire-circle-card p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ---------------- MODAL ---------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 20, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  width: 100%;
+  max-width: 650px;
+  position: relative;
+  animation: slideUp 0.4s ease;
+  box-shadow: var(--shadow-md);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(196, 154, 60, 0.1);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.modal-close:hover {
+  background: var(--gold);
+  color: var(--dark);
+  transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
