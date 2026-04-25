@@ -67,9 +67,9 @@ export function ContactSection() {
               <div className="label">Email</div>
               <div className="value" style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
                 <a href={`mailto:${INQUIRY_EMAIL}`}>{INQUIRY_EMAIL}</a>
-                <a href="mailto:prince@goodeal-bd.com">prince@goodeal-bd.com</a>
                 <a href="mailto:sales@gooddeal-bd.com">sales@gooddeal-bd.com</a>
-                <a href="mailto:supplychain@goodeal-bd.com">supplychain@goodeal-bd.com</a>
+                <a href="mailto:supplychain@gooddeal-bd.com">supplychain@gooddeal-bd.com</a>
+                <a href="mailto:good.deal326@gmail.com">good.deal326@gmail.com</a>
               </div>
             </div>
           </div>

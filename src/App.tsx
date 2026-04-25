@@ -4,6 +4,7 @@ import SolarSolutions from "./pages/SolarSolutions";
 import FireSafetySolutions from "./pages/FireSafetySolutions";
 import FireSafetyProductDetail from "./pages/FireSafetyProductDetail";
 import SolarProductDetail from "./pages/SolarProductDetail";
+import AuthorizedAgent from "./pages/AuthorizedAgent";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/sustainable-solar-solutions/:id" element={<SolarProductDetail />} />
       <Route path="/fire-life-safety-solutions" element={<FireSafetySolutions />} />
       <Route path="/fire-life-safety-solutions/:id" element={<FireSafetyProductDetail />} />
+      <Route path="/authorized-agent" element={<AuthorizedAgent />} />
     </Routes>
   );
 }

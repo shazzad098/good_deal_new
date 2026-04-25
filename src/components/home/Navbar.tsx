@@ -17,6 +17,7 @@ export function Navbar() {
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#advantages">Why Us</a></li>
+          <li><a href="/authorized-agent">Authorized Agent</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         
@@ -41,6 +42,7 @@ export function Navbar() {
             <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a></li>
             <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
             <li><a href="#advantages" onClick={() => setIsMobileMenuOpen(false)}>Why Us</a></li>
+            <li><a href="/authorized-agent" onClick={() => setIsMobileMenuOpen(false)}>Authorized Agent</a></li>
             <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a></li>
           </ul>
           <a href="#contact" className="mobile-nav-cta nav-cta" onClick={(e) => { 

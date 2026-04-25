@@ -6,7 +6,7 @@
 // directly to the inbox.
 //
 // Destination inbox:
-export const INQUIRY_EMAIL = "good.deal326@gmail.com";
+export const INQUIRY_EMAIL = "prince@goodeal-bd.com";
 
 export interface InquiryPayload {
   name: string;
