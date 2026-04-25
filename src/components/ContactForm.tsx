@@ -68,7 +68,6 @@ export function ContactForm() {
           </option>
           <option>Electrical &amp; Power Distribution</option>
           <option>Fire &amp; Life Safety Solutions</option>
-          <option>Lightning Protection Systems</option>
           <option>Solar EPC Solutions</option>
           <option>Civil &amp; Industrial Construction</option>
           <option>Other / General Inquiry</option>

@@ -6,14 +6,16 @@ export function ServiceCard({ data }: { data: ServiceCardData }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (data.num === "04") {
-      navigate("/sustainable-solar-solutions");
+    if (data.num === "01") {
+      navigate("/electrical-power-distribution");
     } else if (data.num === "02") {
       navigate("/fire-life-safety-solutions");
+    } else if (data.num === "04") {
+      navigate("/sustainable-solar-solutions");
     }
   };
 
-  const isClickable = data.num === "04" || data.num === "02";
+  const isClickable = data.num === "01" || data.num === "02" || data.num === "04";
 
   return (
     <article 

@@ -12,8 +12,8 @@ export const services: ServiceCardData[] = [
     num: "01",
     title: "Electrical & Power Distribution",
     description:
-      "Comprehensive LV solutions utilizing 100% genuine components. Direct importer of MCB, MCCB, ACB, and VCB from ABB, Schneider Electric, and Siemens. Custom LV panel manufacturing in-house.",
-    tags: ["Busbar Trunking", "MDB / SDB", "PFI Plants", "MCC & ATS"],
+      "Comprehensive LV solutions utilizing 100% genuine components. Direct importer of MCB, MCCB, ACB, and VCB. Includes high-tech ESE lightning arresters, Surge Protection Devices (SPD), and precision earthing systems.",
+    tags: ["Busbar Trunking", "MDB / SDB", "PFI Plants", "MCC & ATS", "ESE Arresters", "Grounding"],
     image: "/images/electrical.jpg",
     icon: "electrical",
   },
@@ -26,17 +26,9 @@ export const services: ServiceCardData[] = [
     image: "/images/fire-safety.jpg",
     icon: "fire",
   },
+
   {
     num: "03",
-    title: "Lightning Protection Systems",
-    description:
-      "High-tech Early Streamer Emission (ESE) lightning arresters for wide-area coverage. Surge Protection Devices (SPD) and precision earthing systems with certified resistance testing.",
-    tags: ["ESE Arresters", "SPD", "Precision Grounding"],
-    image: "/images/lightning.jpg",
-    icon: "lightning",
-  },
-  {
-    num: "04",
     title: "Sustainable Solar Solutions",
     description:
       "Full EPC (Engineering, Procurement & Construction) services for industrial-grade solar power plants. Specialized Operations & Maintenance including cleaning and routine maintenance to maximize ROI.",
@@ -45,7 +37,7 @@ export const services: ServiceCardData[] = [
     icon: "solar",
   },
   {
-    num: "05",
+    num: "04",
     title: "Civil & Industrial Construction",
     description:
       "Expert execution of heavy-duty factory sheds, warehouses, and specialized machinery foundations. Comprehensive project management from soil analysis and architectural planning to structural reinforcement.",
