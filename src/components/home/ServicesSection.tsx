@@ -9,7 +9,7 @@ export function ServicesSection() {
       </div>
       <div className="services-intro">
         <h2 className="section-title reveal">
-          Five Verticals of
+          Four Verticals of
           <br />
           <em>Engineering Excellence</em>
         </h2>

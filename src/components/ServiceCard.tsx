@@ -10,12 +10,12 @@ export function ServiceCard({ data }: { data: ServiceCardData }) {
       navigate("/electrical-power-distribution");
     } else if (data.num === "02") {
       navigate("/fire-life-safety-solutions");
-    } else if (data.num === "04") {
+    } else if (data.num === "03") {
       navigate("/sustainable-solar-solutions");
     }
   };
 
-  const isClickable = data.num === "01" || data.num === "02" || data.num === "04";
+  const isClickable = data.num === "01" || data.num === "02" || data.num === "03";
 
   return (
     <article 
