@@ -1,0 +1,90 @@
+/* ---------------- ADVANTAGES ---------------- */
+.advantages {
+  background: var(--dark2);
+}
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+.adv-item {
+  text-align: center;
+  padding: 24px 12px;
+  border-radius: var(--radius);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.adv-item:hover {
+  background: rgba(196, 154, 60, 0.04);
+  transform: translateY(-4px);
+}
+.adv-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 60px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.adv-number sup {
+  font-size: 24px;
+  vertical-align: super;
+}
+.adv-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.adv-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 60px;
+}
+.adv-card {
+  border: 1px solid var(--border-light);
+  padding: 36px;
+  border-radius: var(--radius);
+  transition: transform 0.4s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.4s ease;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.015), rgba(0, 0, 0, 0));
+}
+.adv-card:hover {
+  border-color: var(--border);
+  transform: translateY(-4px);
+  background: linear-gradient(160deg, rgba(196, 154, 60, 0.05), rgba(0, 0, 0, 0));
+  box-shadow: var(--shadow-md);
+}
+.adv-card-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(196, 154, 60, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+.adv-card:hover .adv-card-icon {
+  background: var(--gold);
+}
+.adv-card:hover .adv-card-icon svg path,
+.adv-card:hover .adv-card-icon svg circle {
+  stroke: var(--dark);
+}
+.adv-card h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.adv-card p {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-weight: 300;
+}

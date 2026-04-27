@@ -1,0 +1,63 @@
+/* ---------------- SECTION COMMON ---------------- */
+section {
+  padding: 110px 6%;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.section-label::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-label span {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.15;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px 0;
+}
+
+/* ---------------- QUOTE BAR ---------------- */
+.quote-bar {
+  background: var(--gold);
+  padding: 22px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.quote-bar .quote-line {
+  width: 30px;
+  height: 1px;
+  background: var(--dark);
+  opacity: 0.4;
+}
+.quote-bar span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--dark);
+  letter-spacing: 1px;
+}

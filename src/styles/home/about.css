@@ -1,0 +1,133 @@
+/* ---------------- ABOUT ---------------- */
+.about {
+  background: var(--dark2);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+  margin-top: 60px;
+}
+.about-text p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.about-text p strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.highlight-card {
+  position: relative;
+  padding: 28px 26px 26px;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+.highlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(196, 154, 60, 0) 0%, rgba(196, 154, 60, 0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.highlight-card:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  background: linear-gradient(160deg, rgba(196, 154, 60, 0.07), rgba(0, 0, 0, 0));
+  box-shadow: var(--shadow-md);
+}
+.highlight-card:hover::before {
+  opacity: 1;
+}
+.highlight-card .hc-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(196, 154, 60, 0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--gold);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.highlight-card:hover .hc-icon {
+  background: var(--gold);
+  color: var(--dark);
+  transform: rotate(-6deg) scale(1.05);
+}
+.highlight-card .hc-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+.highlight-card h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+.highlight-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.partners {
+  margin-top: 36px;
+}
+.partners-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.partner-tag {
+  border: 1px solid var(--border);
+  padding: 7px 16px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.25s;
+  border-radius: 999px;
+  cursor: default;
+}
+.partner-tag:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(196, 154, 60, 0.06);
+  transform: translateY(-2px);
+}

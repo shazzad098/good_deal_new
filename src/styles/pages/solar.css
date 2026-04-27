@@ -1,0 +1,70 @@
+/* ---------------- SOLAR SOLUTIONS ---------------- */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+.product-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.product-row:nth-child(even) .product-image-container {
+  order: 2;
+}
+.product-row:nth-child(even) .product-info-container {
+  order: 1;
+}
+
+.product-image-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 480px;
+}
+.product-stock-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.product-image-container:hover .product-stock-image {
+  transform: scale(1.05);
+}
+.image-overlay-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.product-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(196, 154, 60, 0.15);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+.product-info-container h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+  margin-top: 10px;
+}
+.product-info-container p {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 500px;
+}

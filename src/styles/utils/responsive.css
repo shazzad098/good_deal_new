@@ -1,0 +1,120 @@
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  nav.gd-nav {
+    padding: 0 16px;
+    top: 10px;
+    border-radius: 12px;
+  }
+  .nav-logo .brand {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  .nav-logo .tagline {
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+  }
+  nav > .nav-cta {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hero {
+    padding: 130px 6% 80px;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .hero-side {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .hero-stats {
+    flex-direction: row;
+    text-align: left;
+    border-right: none;
+    padding-right: 0;
+    gap: 36px;
+  }
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .adv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .adv-cards {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  footer.gd-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 6% 120px;
+    gap: 24px;
+    position: relative;
+    z-index: 10;
+    background: var(--dark2);
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-brand .brand {
+    font-size: 26px;
+  }
+  .footer-brand .sub {
+    font-size: 15px;
+    color: var(--text);
+    margin-top: 8px;
+  }
+  .footer-copy {
+    font-size: 16px;
+    color: var(--text);
+    max-width: 250px;
+    line-height: 1.5;
+  }
+  section {
+    padding: 80px 6%;
+  }
+
+  .product-list {
+    gap: 80px;
+  }
+  .product-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .product-row:nth-child(even) .product-image-container {
+    order: 0;
+  }
+  .product-row:nth-child(even) .product-info-container {
+    order: 1;
+  }
+  .product-image-container {
+    height: 320px;
+  }
+}
