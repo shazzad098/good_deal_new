@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ContactForm } from "../ContactForm";
 
 export function Navbar() {
@@ -14,11 +15,11 @@ export function Navbar() {
         </div>
         
         <ul className="nav-links">
-          <li><a href="/#about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/#advantages">Why Us</a></li>
-          <li><a href="/authorized-agent">Authorized Agent</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><Link to="/#about">About</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/#advantages">Why Us</Link></li>
+          <li><Link to="/authorized-agent">Authorized Agent</Link></li>
+          <li><Link to="/#contact">Contact</Link></li>
         </ul>
         
         <a href="#contact" className="nav-cta" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}>
@@ -39,11 +40,11 @@ export function Navbar() {
         {/* Mobile Dropdown Menu */}
         <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-nav-links">
-            <li><a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About</a></li>
-            <li><a href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
-            <li><a href="/#advantages" onClick={() => setIsMobileMenuOpen(false)}>Why Us</a></li>
-            <li><a href="/authorized-agent" onClick={() => setIsMobileMenuOpen(false)}>Authorized Agent</a></li>
-            <li><a href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a></li>
+            <li><Link to="/#about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
+            <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</Link></li>
+            <li><Link to="/#advantages" onClick={() => setIsMobileMenuOpen(false)}>Why Us</Link></li>
+            <li><Link to="/authorized-agent" onClick={() => setIsMobileMenuOpen(false)}>Authorized Agent</Link></li>
+            <li><Link to="/#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link></li>
           </ul>
           <a href="#contact" className="mobile-nav-cta nav-cta" onClick={(e) => { 
             e.preventDefault(); 

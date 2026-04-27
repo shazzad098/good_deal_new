@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   const heroVideos = [
@@ -35,9 +36,9 @@ export function Hero() {
             Turnkey engineering solutions for power and infrastructure.
           </p>
           <div className="hero-actions">
-            <a href="/services" className="btn-primary">
+            <Link to="/services" className="btn-primary">
               Our Services
-            </a>
+            </Link>
             <a href="#contact" className="btn-outline">
               Get in Touch
             </a>
