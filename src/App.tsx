@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import ServicesPage from "./pages/ServicesPage";
 import SolarSolutions from "./pages/SolarSolutions";
 import FireSafetySolutions from "./pages/FireSafetySolutions";
 import ElectricalSolutions from "./pages/ElectricalSolutions";
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/services" element={<ServicesPage />} />
       <Route path="/electrical-power-distribution" element={<ElectricalSolutions />} />
       <Route path="/electrical-power-distribution/:id" element={<ElectricalProductDetail />} />
       <Route path="/sustainable-solar-solutions" element={<SolarSolutions />} />

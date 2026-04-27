@@ -1,7 +1,6 @@
 import { useReveal } from "../hooks/useReveal";
 import { Navbar } from "../components/home/Navbar";
 import { Hero } from "../components/home/Hero";
-import { ServicesSection } from "../components/home/ServicesSection";
 import { AboutSection } from "../components/home/AboutSection";
 import { AdvantagesSection } from "../components/home/AdvantagesSection";
 import { ContactSection } from "../components/home/ContactSection";
@@ -14,7 +13,6 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <ServicesSection />
       
       {/* QUOTE BAR */}
       <div className="quote-bar">

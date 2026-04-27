@@ -267,7 +267,7 @@ nav.gd-nav {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .hero-video-overlay {
@@ -275,8 +275,8 @@ nav.gd-nav {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.4) 60%,
     var(--dark) 100%
   );
   z-index: 1;
@@ -314,19 +314,23 @@ nav.gd-nav {
   position: relative;
   z-index: 2;
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 60px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .hero-content {
-  max-width: 720px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   margin-bottom: 28px;
   animation: fadeUp 0.8s ease both;
@@ -370,6 +374,7 @@ nav.gd-nav {
 
 .hero-actions {
   display: flex;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
   animation: fadeUp 0.8s 0.45s ease both;
@@ -418,80 +423,6 @@ nav.gd-nav {
   border-color: var(--gold);
   color: var(--gold);
   transform: translateY(-2px);
-}
-
-/* Hero side panel: stats + badge stacked */
-.hero-side {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 40px;
-  animation: fadeLeft 0.8s 0.6s ease both;
-}
-
-.hero-badge {
-  width: 150px;
-  height: 150px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  flex-shrink: 0;
-}
-.hero-badge::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px dashed rgba(196, 154, 60, 0.25);
-  border-radius: 50%;
-  animation: spinSlow 30s linear infinite;
-}
-.hero-badge-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  z-index: 1;
-}
-.hero-badge .badge-text {
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-.hero-badge .badge-year {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 32px;
-  font-weight: 300;
-  color: var(--text);
-  line-height: 1;
-}
-
-.hero-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  text-align: right;
-  border-right: 1px solid var(--border-light);
-  padding-right: 28px;
-}
-.hero-stat .num {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 44px;
-  font-weight: 300;
-  color: var(--gold);
-  line-height: 1;
-}
-.hero-stat .label {
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 6px;
 }
 
 /* ---------------- SECTION COMMON ---------------- */
