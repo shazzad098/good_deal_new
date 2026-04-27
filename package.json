@@ -28,9 +28,6 @@
     "vite-plugin-singlefile": "2.3.0"
   },
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
