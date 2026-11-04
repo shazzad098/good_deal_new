@@ -34,7 +34,7 @@ export function AboutSection() {
               <div className="partner-tag">ABB — Switzerland</div>
               <div className="partner-tag">Schneider Electric — France</div>
               <div className="partner-tag">Siemens — Germany</div>
-              <div className="partner-tag">EAE Busbar Systems</div>
+              <div className="partner-tag">BBT</div>
               <div className="partner-tag">PCJ Industries — Thailand</div>
             </div>
           </div>
